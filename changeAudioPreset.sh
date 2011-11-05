@@ -41,8 +41,22 @@ if [ $# -lt "1" ]; then
 	exit 1
 fi
 
-while getopts ":ivkp:" opt; do
+while getopts ":hivkp:" opt; do
 	case $opt in
+		h)
+			printInfo
+			echo -ne "\n"
+			printUsage
+			exit 0
+		;;
+		i)
+			printInfo
+			exit 0
+		;;
+		v)
+			echo $VERSION
+			exit 0
+		;;
 		p)
 			if [ -n "$preset_name" ]; then	
 				echo "Preset name already specified" >&2
@@ -59,14 +73,6 @@ while getopts ":ivkp:" opt; do
 		;;
 		k)
 			keep_volume=1
-		;;
-		i)
-			printInfo
-			exit 0
-		;;
-		v)
-			echo $VERSION
-			exit 0
 		;;
 		\?)
 			echo "Invalid option -$opt." >&2
