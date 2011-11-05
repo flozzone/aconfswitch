@@ -9,7 +9,7 @@ THIS=$(dirname $0)
 PRESETSFOLDER="$HOME/.alsapresets"
 
 printUsage () {
-	echo "Usage: changeAudioPreset.sh -p PRESETNAME [OPTIONS]"
+	echo "Usage: aconfswitch -p PRESETNAME [OPTIONS]"
 	echo "		OPTIONS		Can be a set of this options:"
 	echo "			-p PRESETNAME		Name of the preset stored in audioPresets folder."
 	echo "			-k			Keep line after the first match "
@@ -17,16 +17,16 @@ printUsage () {
 	echo "						from the old preset."
 	echo "			-i			Print informations about this script."
 	echo "			-v			Print version number."
-	echo -e "\nExample: changeAudioPreset desktop	For the configuration file"
-	echo "						audioPresets/desktop.conf"
+	echo -e "\nExample: aconfswitch desktop	For the configuration file"
+	echo "						~/.alsapresets/desktop.conf"
 }
 
 printInfo () {
 	echo "This program is used to switch between different alsa configuration files."
 	echo "It searchs for configuration files with the specified PRESETNAME appended"
-	echo "by a '.conf' in the directory named audioPresets relatively to the location"
-	echo "of this script."
+	echo "by a '.conf' in the directory .alsapresets located in your home directory."
 	echo "alsactl is used to switch between presets."
+	echo "Create a configuration file by calling alsactl -f FILENAME.conf store."
 	echo "Autor: Florin Hillebrand"
 }
 
