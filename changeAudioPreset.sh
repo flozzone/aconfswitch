@@ -4,13 +4,6 @@
 #
 # autor: Florin Hillebrand
 
-# TODO:
-#	- Let the user specify which match of "Master Playback Volume" with grep -m 
-#	- Let the user specify the directory containing configuration files
-#	- Insert tabs before value to match original syntax
-
-
-
 VERSION="0.5"
 THIS=$(dirname $0)
 
