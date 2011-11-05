@@ -31,7 +31,8 @@ printInfo () {
 	echo "This program is used to switch between different alsa configuration files."
 	echo "It searchs for configuration files with the specified PRESETNAME appended"
 	echo "by a '.conf' in the directory named audioPresets relatively to the location"
-	echo -e "of this script.\n"
+	echo "of this script."
+	echo "alsactl is used to switch between presets."
 	echo "Author: Florin Hillebrand"
 }
 
