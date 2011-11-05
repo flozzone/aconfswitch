@@ -6,6 +6,7 @@
 
 VERSION="0.5"
 THIS=$(dirname $0)
+PRESETSFOLDER="$HOME/.alsapresets"
 
 printUsage () {
 	echo "Usage: changeAudioPreset.sh -p PRESETNAME [OPTIONS]"
@@ -57,7 +58,7 @@ while getopts ":hivkp:" opt; do
 				exit 1
 			fi
 			preset_name=$OPTARG
-			preset_file="$THIS/audioPresets/$preset_name.conf"
+			preset_file="$PRESETSFOLDER/$preset_name.conf"
 
 			if [ ! -f "$preset_file" ]; then
 				echo "Could not find audio preset configuration file in $preset_file." >&2
