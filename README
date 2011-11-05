@@ -1,0 +1,5 @@
+Help:
+	Print help with -h switch
+
+Dependencies:
+	sed
