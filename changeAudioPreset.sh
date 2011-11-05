@@ -33,7 +33,7 @@ printInfo () {
 	echo "by a '.conf' in the directory named audioPresets relatively to the location"
 	echo "of this script."
 	echo "alsactl is used to switch between presets."
-	echo "Author: Florin Hillebrand"
+	echo "Autor: Florin Hillebrand"
 }
 
 if [ $# -lt "1" ]; then
