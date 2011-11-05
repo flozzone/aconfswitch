@@ -31,8 +31,8 @@ printInfo () {
 	echo "This program is used to switch between different alsa configuration files."
 	echo "It searchs for configuration files with the specified PRESETNAME appended"
 	echo "by a '.conf' in the directory named audioPresets relatively to the location"
-	echo "of this script.\n"
-	echo "Author: Florin Hillebrand 2011"
+	echo -e "of this script.\n"
+	echo "Author: Florin Hillebrand"
 }
 
 if [ $# -lt "1" ]; then
