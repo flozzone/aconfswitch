@@ -1,11 +1,26 @@
 Help:
-	Print help with -h switch
+	Display help with -h switch.
 
 Dependencies:
-	sed
+	alsactl, bash, sed
 
-TODO:
-	- Let the user specify which match of "Master Playback Volume" with grep -m 
-	- Let the user specify the directory containing configuration files
-	- Insert tabs before value to match original syntax
-	- Let the user specify a set of lines to skip when switching.
+Installation:
+	Copy aconfswitch script to your preferred folder and make it available through PATH
+	variable. You can create a symbolic link in /usr/bin or add the path to aconfswitch
+	script to your PATH variable.
+	Make sure the script is executable by issuing:
+
+		chmod +x aconfswitch
+
+	Create a folder containing your alsa configuration files within your home directory,
+	so every user can have its own configuration files.
+
+		mkdir ~/.alsapresets/
+
+	To create configuration files, edit your current configuration in the way you want to
+	have the new preset, e.g. use alsamixer to set the volume of the individual speakers.
+	After finishing configuration, store your current configuration to a file by executing:
+
+		alsactl -f ~/.alsapresets/[PRESETNAME].conf
+
+	Replace [PRESETNAME] with your preferred preset name.
