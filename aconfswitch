@@ -82,48 +82,20 @@ if [ -z $preset_name ]; then
 	exit 1
 fi
 
+# keep volume NOT set
 if [ -z $keep_volume ]; then
 	# apply new preset
-	alsactl -f $new_preset restore
+	alsactl -f $preset_file restore
 
+# keep volume set
 else
-	old_preset="/tmp/alsapreset-old.conf"
-	
-	# backup old preset configuration file
-	alsactl -f $old_preset store
-
-	# find line which matches "Master Playback Volume"
-	label_line=`cat $old_preset | grep --no-messages --max-count=1 -n "Master Playback Volume" | cut -d: -f1`
-
-	# check if label has been found
-	if [ -z "$label_line" ]; then
-		echo "'Master Playback Volume' not found in current configuration." >&2
-		exit 1
-	fi
-
-	# increment by one to catch value line
-	value_line=$(( label_line + 1 ))
-
-	# store old volume line
-	old_volume=`sed -n ${value_line}p $old_preset`
-
-	# delete backup preset
-	rm -f $old_preset
-	
-	#store new preset in separate file
-	new_preset="/tmp/alsapreset-new.conf"
-	cp $preset_file $new_preset
-
-	# delete old volume value line
-	sed -i -e ${value_line}d $new_preset
-
-	# insert old volume value line
-	sed -i "$value_line i${old_volume}" $new_preset
+	# get current master volume level
+	current_volume_value=`amixer sget Master | grep "Mono:" | cut -d' ' -f5`
 
 	# apply new preset
-	alsactl -f $new_preset restore
+        alsactl -f $preset_file restore
 
-	# delete temporary created preset
-	#rm -f $new_preset	
+	# set old volume level
+	amixer sset Master $current_volume_value
 fi
 exit 0
